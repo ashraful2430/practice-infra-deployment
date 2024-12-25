@@ -1,0 +1,24 @@
+stages:
+  - init
+  - apply
+
+
+init:
+  stage: init
+  image:
+    name: hashicorp/terraform
+    entrypoint: [""]
+  script:
+    - terraform init
+    - terraform plan
+
+
+apply:
+  stage: apply
+  image:
+    name: hashicorp/terraform
+    entrypoint: [""]
+  script:
+    - terraform init
+    - terraform apply -auto-approve
+  when: manual
